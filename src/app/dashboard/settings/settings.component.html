@@ -1,0 +1,62 @@
+<button class="btn btn-primary" type="button" name="change-password" (click)="showChangePasswordForm()">Change password</button>
+
+
+<form class="form" [formGroup]="changePassForm"  *ngIf="changePassFormVisible"  (ngSubmit)="onSubmit()">
+
+  <div class="form-group">
+    <label for="password">Current password:</label>
+    <input type="password" id="username" value=""
+    formControlName="password" required>
+    <div *ngIf="formErrors.password" class="alert alert-danger">
+      {{ formErrors.password }}
+    </div>
+  </div>
+
+
+  <!-- <div class="form-group">
+    <label for="new_password">New password:</label>
+    <input type="password" id="new_password" value=""
+    formControlName="new_password" required>
+    <div *ngIf="formErrors.new_password" class="alert alert-danger">
+      {{ formErrors.new_password }}
+    </div>
+  </div> -->
+
+
+  <div class="form-group">
+    <label for="new_password">New password:</label>
+    <label for="new_password" class="tooltip tooltip-validation tooltip-sm tooltip-top-left"
+    aria-haspopup="true" role="tooltip" [class.invalid]="formErrors.new_password">
+        <input id="new_password" type="password" formControlName="new_password">
+        <span class="tooltip-content">
+            {{ formErrors.new_password }}
+        </span>
+    </label>
+  </div>
+
+  <!-- <div class="form-group">
+    <label for="re_new_password">Repeat new password:</label>
+    <input type="password" id="re_new_password" value=""
+    formControlName="re_new_password" required>
+    <div *ngIf="formErrors.re_new_password" class="alert alert-danger">
+      {{ formErrors.re_new_password }}
+    </div>
+  </div> -->
+
+  <div class="form-group">
+    <label for="re_new_password">Repeat new password:</label>
+    <label for="re_new_password" class="tooltip tooltip-validation tooltip-sm tooltip-top-left"
+    aria-haspopup="true" role="tooltip" [class.invalid]="formErrors.re_new_password">
+        <input id="re_new_password" type="password" formControlName="re_new_password">
+        <span class="tooltip-content">
+            {{ formErrors.re_new_password }}
+        </span>
+    </label>
+  </div>
+
+
+
+  <button class="btn btn-success" [disabled]="!changePassForm.valid" type="submit" id="change-password-button">Change password</button>
+  <button class="btn btn-primary" type="button" id="cancel-button" (click)="cancelChangePassword()">Cancel</button>
+
+</form>

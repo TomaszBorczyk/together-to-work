@@ -1,0 +1,124 @@
+$icon-size: 25px;
+
+h1{
+  font-size: 25px;
+}
+
+form{
+  margin: 0 auto;
+}
+
+.text-input{
+  width: 100%;
+}
+
+.route-streets{
+  font-size: 18px;
+}
+
+.title{
+  font-weight: 500;
+  font-size: 20px;
+}
+
+.days-selector{
+  margin-top: 12px;
+  margin-left: 0px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  .btn{
+    margin-left: 6px;
+    margin-right: 6px;
+  }
+}
+
+.routes-list{
+  vertical-align: middle;
+}
+
+.route-days{
+  margin: 0;
+  vertical-align: middle;
+  margin-top: 6px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+.routes-cards{
+  margin: 0;
+  padding: 0;
+  vertical-align: top;
+}
+
+.route-street{
+  font-weight: 500;
+  font-size: 18px;
+}
+
+// .day-active{
+//   color: white;
+//   background-color: black;
+// }
+
+.row{
+  margin-left: 0;
+}
+
+.left-margin{
+  margin-left: 10px;
+}
+
+
+.table{
+  width: auto;
+  margin: 0;
+  margin-left: 6px;
+}
+
+
+
+clr-icon{
+  min-width: $icon-size;
+  min-height: $icon-size;
+  width: $icon-size;
+  height: $icon-size;
+}
+
+td{
+  padding: 0;
+
+  div{
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+    padding: 5px;
+  }
+}
+
+@media only screen and (min-width: 480px) {
+  .text-input{
+    width: auto;
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  .card-block{
+    padding: 10px 10px 10px 10px;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .card-block{
+    padding: 10px 10px 10px 10px;
+  }
+}
+
+@media only screen and (min-width: 1224px) {
+  .days-selector{
+    justify-content: flex-start;
+  }
+}

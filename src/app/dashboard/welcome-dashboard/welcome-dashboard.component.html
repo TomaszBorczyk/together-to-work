@@ -1,0 +1,61 @@
+<div class="content-area">
+<h2>
+  <div class="capitalize">Hello {{ username }}!</div>
+  Your rating {{ rating }}.
+</h2>
+<br>
+</div>
+<div class="col-lg-12 col-md-8 col-sm-12 col-xs-12">
+  <div class="card">
+    <div class="card-header">
+      Comments
+    </div>
+    <div class="row">
+      <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12" *ngFor="let rating of pagedItems">
+        <div class="card">
+          <div class="card-block">
+            <div class="card-media-block">
+                <clr-icon shape="user" class="card-media-image"></clr-icon>
+                <div class="card-media-description">
+                  <span class="card-media-title">
+                    {{ rating.author.username }}
+                  </span>
+                  <span class="card-media-text">
+                    {{ rating.value }}
+                  </span>
+                </div>
+            </div>
+            <div class="card-text">
+              <div *ngIf="rating.comment.length<30">
+                {{ rating.comment }}
+              </div>
+              <clr-tabs *ngIf="rating.comment.length>30">
+                  <clr-tab>
+                    <button clrTabLink>Short comment</button>
+                    <clr-tab-content *clrIfActive="true">
+                      {{ rating.comment.slice(0, 30) }}...
+                    </clr-tab-content>
+                  </clr-tab>
+                  <clr-tab>
+                      <button clrTabLink>Full comment</button>
+                      <clr-tab-content *clrIfActive>
+                      {{ rating.comment }}
+                      </clr-tab-content>
+                  </clr-tab>
+              </clr-tabs>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer">
+      <div class="col-xs">
+        <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+          <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+            <a (click)="setPage(page)"><button class="btn"> {{page}} </button></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

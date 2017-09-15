@@ -1,0 +1,31 @@
+<nav class="subnav" [clr-nav-level]="2">
+  <ul class="nav">
+    <li class="nav-item">
+      <a class="nav-link" routerLinkActive="active" routerLink="welcome">Welcome</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLinkActive="active" routerLink="subscriptions">Subscriptions</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLinkActive="active" routerLink="requests">
+        Requests
+        {{ newRequests }}
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLinkActive="active" routerLink="routes">Your routes</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLinkActive="active" routerLink="cars">Your cars</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLinkActive="active" routerLink="settings">Settings</a>
+    </li>
+
+  </ul>
+</nav>
+
+<div class="wrapper">
+  <router-outlet>
+  </router-outlet>
+</div>

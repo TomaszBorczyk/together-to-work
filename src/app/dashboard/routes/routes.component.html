@@ -1,0 +1,187 @@
+<form class="form" [formGroup]="routeForm" (ngSubmit)="onSubmit()">
+  <section class="form-block">
+
+  <label>Add new route:</label>
+
+  <div class="form-group">
+    <label for="startStreet">Route start:</label>
+    <label for="startStreet"
+        aria-haspopup="true"
+        role="tooltip"
+        class="tooltip tooltip-validation tooltip-sm"
+        [class.invalid]="formErrors.startStreet">
+        <input id="startStreet" type="text" ngui-auto-complete autocomplete="off"
+        formControlName="startStreet" [source]="observableSource.bind(this)">
+        <span class="tooltip-content">
+            {{ formErrors.startStreet }}
+        </span>
+    </label>
+  </div>
+
+  <div class="form-group">
+    <label for="endStreet">Route end:</label>
+    <label for="endStreet" class="tooltip tooltip-validation tooltip-sm"
+    aria-haspopup="true" role="tooltip" [class.invalid]="formErrors.endStreet">
+        <input id="endStreet" type="text" ngui-auto-complete autocomplete="off"
+        formControlName="endStreet" [source]="observableSource.bind(this)">
+        <span class="tooltip-content">
+            {{ formErrors.endStreet }}
+        </span>
+    </label>
+  </div>
+
+  <!--vias-->
+  <div formArrayName="viaStreets">
+    <div *ngFor="let via of routeForm.controls.viaStreets.controls; let i=index">
+      <span>Via {{i + 1}}</span>
+      <div class="form-group" [formGroupName]="i">
+        <label>Name</label>
+        <input type="text" formControlName="name">
+        <clr-icon shape="times" (click)="removeVia(i)"></clr-icon>
+      </div>
+    </div>
+  </div>
+
+  <div>
+     <a (click)="addVia()">
+       Add another via +
+     </a>
+  </div>
+
+  <div class="form-group">
+    <label for="car">Car:</label>
+    <label for="car" class="tooltip tooltip-validation tooltip-sm"
+    aria-haspopup="true" role="tooltip" [class.invalid]="formErrors.car">
+        <div class="select">
+          <select id="car" formControlName="car" required>
+             <option *ngFor="let car of cars" [ngValue]="car">{{car.name}}</option>
+          </select>
+        </div>
+
+        <span class="tooltip-content">
+            {{ formErrors.car }}
+        </span>
+    </label>
+  </div>
+
+
+  <div class="form-group">
+    <label for="startTime">Start time:</label>
+    <label for="startTime" class="tooltip tooltip-validation tooltip-sm"
+    aria-haspopup="true" role="tooltip" [class.invalid]="formErrors.startTime">
+        <input id="startTime" type="time" formControlName="startTime">
+        <span class="tooltip-content">
+            {{ formErrors.startTime }}
+        </span>
+    </label>
+  </div>
+
+
+  <div class="input-group days-selector" formArrayName="days">
+      <div [formGroupName]="0" class="checkbox btn btn-sm">
+        <input type="checkbox" id="day-mon" formControlName="day">
+        <label for="day-mon"> Mon </label>
+      </div>
+      <div [formGroupName]="1" class="checkbox btn btn-sm">
+        <input type="checkbox" id="day-tue" formControlName="day">
+        <label for="day-tue"> Tue </label>
+      </div>
+      <div [formGroupName]="2" class="checkbox btn btn-sm">
+        <input type="checkbox" id="day-wed" formControlName="day">
+        <label for="day-wed"> wed </label>
+      </div>
+      <div [formGroupName]="3" class="checkbox btn btn-sm">
+        <input type="checkbox" id="day-thu" formControlName="day">
+        <label for="day-thu"> thu </label>
+      </div>
+      <div [formGroupName]="4" class="checkbox btn btn-sm">
+        <input type="checkbox" id="day-fri" formControlName="day">
+        <label for="day-fri"> fri </label>
+      </div>
+      <div [formGroupName]="5" class="checkbox btn btn-sm">
+        <input type="checkbox" id="day-sat" formControlName="day">
+        <label for="day-sat"> sat </label>
+      </div>
+      <div [formGroupName]="6" class="checkbox btn btn-sm">
+        <input type="checkbox" id="day-sun" formControlName="day">
+        <label for="day-sun"> sun </label>
+      </div>
+  </div>
+
+  <div class="form-group">
+    <label>Returning</label>
+    <div class="checkbox">
+        <input type="checkbox" id="isReturning" formControlName="isReturning">
+        <label for="isReturning"></label>
+    </div>
+  </div>
+
+  <div *ngIf="routeForm.get('isReturning').value" class="form-group">
+    <label for="returningTime">Returning time:</label>
+    <label for="returningTime">
+        <input id="returningTime" type="time">
+        <span class="tooltip-content">
+            {{ formErrors.returningTime }}
+        </span>
+    </label>
+  </div>
+
+  <button class="btn btn-primary" [disabled]="!routeForm.valid" type="submit" id="add-route-button">Add route</button>
+</section>
+
+</form>
+
+<div class="row routes-cards">
+      <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-xs-12" *ngFor="let route of routes; let i = index">
+          <div class="card">
+              <div class="card-block">
+                  <span class="card-title">
+                      {{route.startStreet}} - {{route.endStreet}}
+                  </span>
+                  <div class="card-text">
+
+                    <div class="row">
+                      <clr-icon shape="clock"></clr-icon>
+                      <div class="row-element">
+                        {{ route.startTime }}
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <clr-icon shape="car"></clr-icon>
+                      <div class="row-element">
+                        {{ getCarById(route.carId).name }}
+                      </div>
+                    </div>
+
+                    <div class="route-days">
+                      <clr-icon shape="calendar"></clr-icon>
+                      <table class="table">
+                        <tr>
+                          <td *ngFor="let day of getAsArray(route.days)">
+                            <div [ngClass]="{'day-active': day.value}">
+                              {{ day.name }}
+                            </div>
+                          </td>
+                        </tr>
+                      </table>
+                    </div>
+
+                    <div class="passengers-section row">
+                      <clr-icon shape="users"></clr-icon>
+                      <div class="passenger-links">
+                        <div *ngFor="let passenger of route.passengers">
+                          <a routerLink="/profile/{{passenger._id}}"> {{ passenger.username }}</a>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+              </div>
+              <div class="card-footer">
+                <button class="btn btn-sm btn-danger" type="button" name="delete-route" (click)="removeRoute(route)">Delete</button>
+              </div>
+
+          </div>
+      </div>
+</div>

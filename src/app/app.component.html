@@ -1,0 +1,52 @@
+<clr-main-container>
+  <clr-header class="header header-6">
+
+      <div class="branding">
+        <a class="nav-link" routerLink="dashboard">
+          <clr-icon shape="car"></clr-icon>
+          <span class="title">together-to-work</span>
+        </a>
+      </div>
+
+      <div class="header-nav" [clr-nav-level]="1">
+          <a class="nav-link" *ngIf="this.ttw_userService.isLoggedIn()" routerLinkActive="active" routerLink="dashboard">
+            <span class="nav-text">
+              Dashboard {{ newRequests }}
+            </span>
+          </a>
+          <a class="nav-link" *ngIf="this.ttw_userService.isLoggedIn()" routerLinkActive="active" routerLink="searchroutes">
+            <span class="nav-text">
+              Search routes
+            </span>
+          </a>
+      </div>
+
+      <div class="header-actions">
+        <a class="nav-link" *ngIf="this.ttw_userService.isLoggedIn()">
+          <span class="nav-text">
+            {{username}}
+          </span>
+        </a>
+
+
+        <a class="nav-link" *ngIf="!this.ttw_userService.isLoggedIn()" routerLinkActive="active" routerLink="login">
+          <span class="nav-text">
+            Login
+          </span>
+        </a>
+        <a class="nav-link" *ngIf="!this.ttw_userService.isLoggedIn()" routerLinkActive="active" routerLink="register">
+          <span class="nav-text">
+            Register
+          </span>
+        </a>
+        <a class="nav-link nav-icon" *ngIf="this.ttw_userService.isLoggedIn()" routerLinkActive="active" (click)='this.ttw_apiService.logout()'>
+          <clr-icon shape="logout"></clr-icon>
+        </a>
+     </div>
+
+  </clr-header >
+
+  <router-outlet>
+  </router-outlet>
+
+</clr-main-container>

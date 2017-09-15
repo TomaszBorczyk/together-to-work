@@ -1,0 +1,24 @@
+
+form{
+  text-align: center;
+  margin: 20px;
+}
+
+.form-group{
+  text-align: left;
+}
+
+.btn{
+  width: 100%;
+}
+
+@media screen and (min-width: 544px) {
+  .form-block{
+    display: inline-block;
+  }
+
+  form{
+    margin-top: 50px;
+  }
+
+}

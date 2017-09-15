@@ -1,0 +1,90 @@
+
+<div class="row">
+  <!--  REQUESTS RECEIVED -->
+  <div class="col-md-6 row routes-cards">
+      <div class="col-sm-12">
+        <h1>Requests received:</h1>
+        <span *ngIf="requestsReceived.length === 0"> no requests</span>
+      </div>
+
+      <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12 col-xs-12" *ngFor="let request of requestsReceived; let i = index">
+        <div class="card">
+
+            <div class="card-block">
+
+                <span class="card-title">
+                  <a routerLink="/profile/{{request.passenger._id}}"><clr-icon shape="user"></clr-icon> {{ request.passenger.username }}</a>
+
+                </span>
+
+                <div class="card-text">
+                  <div class="route-streets">
+                    <clr-icon shape="map"></clr-icon> {{ request.route.startStreet }} - {{ request.route.endStreet }}
+                  </div>
+                  <div class="route-days">
+                    <clr-icon shape="calendar"></clr-icon>
+                    <table class="table">
+                      <tr>
+                        <td *ngFor="let day of this.helper.getDaysAsArray(request.route.days)">
+                          <div [ngClass]="{'day-active': day.value}">
+                            {{ day.name }}
+                          </div>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+            </div>
+
+            <div class="card-footer">
+              <button type="button" class="btn btn-sm btn-success" name="accept-request-button" (click)="acceptRequest(request)">Accept</button>
+              <button type="button" class="btn btn-sm btn-danger" name="decline-request-button" (click)="declineRequest(request)">Decline</button>
+            </div>
+
+        </div>
+      </div>
+
+  </div>
+
+  <!--  REQUESTS SENT -->
+  <div class="col-md-6 row routes-cards">
+      <div class="col-sm-12">
+        <h1>Requests sent:</h1>
+        <span *ngIf="requestsSent.length === 0"> no requests</span>
+      </div>
+      <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12 col-xs-12" *ngFor="let request of requestsSent; let i = index">
+        <div class="card">
+
+            <div class="card-block">
+                <span class="card-title">
+                  <a routerLink="/profile/{{request.driver._id}}"><clr-icon shape="user"></clr-icon> {{ request.driver.username }}</a>
+                  <div class="route-streets">
+                    <clr-icon shape="map"></clr-icon> {{ request.route.startStreet }} - {{ request.route.endStreet }}
+                  </div>
+                </span>
+
+                <div class="card-text">
+                  <div class="route-days">
+                    <clr-icon shape="calendar"></clr-icon>
+                    <table class="table">
+                      <tr>
+                        <td *ngFor="let day of this.helper.getDaysAsArray(request.route.days)">
+                          <div [ngClass]="{'day-active': day.value}">
+                            {{ day.name }}
+                          </div>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+            </div>
+
+            <div class="card-footer">
+              <button type="button" class="btn btn-sm btn-danger" name="cancel-request-button" (click)="cancelRequest(request)">Cancel request</button>
+            </div>
+
+        </div>
+      </div>
+
+  </div>
+</div>

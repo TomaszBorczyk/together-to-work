@@ -1,0 +1,90 @@
+<div class="row">
+  <div class="col-lg-6">
+
+    <form class="form" [formGroup]="carForm" (ngSubmit)="onSubmit()">
+      <section class="form-block">
+
+        <label class=title>Add a new car</label>
+
+        <div class="form-group">
+          <label for="name">Car name (brand and model):</label>
+          <label for="name" class="tooltip tooltip-validation tooltip-sm tooltip-top-left"
+          aria-haspopup="true" role="tooltip" [class.invalid]="formErrors.name">
+              <input id="startStreet" type="text" formControlName="name">
+              <span class="tooltip-content">
+                  {{ formErrors.name }}
+              </span>
+          </label>
+        </div>
+
+        <div class="form-group">
+          <label for="color">Color:</label>
+          <label for="color" class="tooltip tooltip-validation tooltip-sm tooltip-top-left"
+          aria-haspopup="true" role="tooltip" [class.invalid]="formErrors.color">
+              <input id="color" type="text" formControlName="color">
+              <span class="tooltip-content">
+                  {{ formErrors.color }}
+              </span>
+          </label>
+        </div>
+
+        <div class="form-group">
+          <label for="seats">No. of seats:</label>
+          <label for="seats" class="tooltip tooltip-validation tooltip-sm tooltip-top-left"
+          aria-haspopup="true" role="tooltip" [class.invalid]="formErrors.seats">
+              <input id="seats" type="text" formControlName="seats">
+              <span class="tooltip-content">
+                  {{ formErrors.seats }}
+              </span>
+          </label>
+        </div>
+
+        <div class="form-group">
+          <label for="description">Description:</label>
+          <label for="description" class="tooltip tooltip-validation tooltip-sm tooltip-top-left"
+          aria-haspopup="true" role="tooltip" [class.invalid]="formErrors.description">
+              <input id="description" type="text" formControlName="description">
+              <span class="tooltip-content">
+                  {{ formErrors.description }}
+              </span>
+          </label>
+        </div>
+
+        <button class="btn btn-primary" [disabled]="!carForm.valid" type="submit" id="add-car-button">Add car</button>
+      </section>
+    </form>
+  </div>
+
+
+
+  <div class="col-lg-6">
+    <div class="col-sm-12 row routes-cards">
+
+      <div class="col-sm-12">
+        <h1>Your cars:</h1>
+        <span *ngIf="cars.length === 0"> no cars</span>
+      </div>
+
+        <div class="col-xl-4 col-lg-6" *ngFor="let car of cars; let i = index">
+          <div class="card">
+
+              <div class="card-block">
+                  <span class="card-title">
+                    {{ car.name }}
+                  </span>
+                  <div class="card-text">
+                    Seats: {{ car.seats }}
+                  </div>
+              </div>
+
+              <div class="card-footer">
+                <button class="btn btn-sm btn-danger" type="button" name="remove-car-button" (click)="removeCar(car)">Delete</button>
+              </div>
+
+          </div>
+        </div>
+
+    </div>
+  </div>
+
+</div>

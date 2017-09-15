@@ -1,0 +1,22 @@
+
+  <div class="login-wrapper">
+    <form class="login" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <label class="title">
+            <h3 class="welcome">Welcome to</h3>
+            Together to work
+            <h5 class="hint">Use your email to sign in or create account now</h5>
+        </label>
+        <div class="login-group">
+            <input class="username" type="text" id="username" placeholder="Username" formControlName="username">
+            <input class="password" type="password" id="password" placeholder="Password" formControlName="password">
+            <div class="error active" *ngIf="loginFailed">
+                Invalid user name or password
+            </div>
+            <button type="submit" [disabled]="!loginForm.valid" class="btn btn-primary">Login</button>
+            <a routerLink="/register" class="signup">Register with email</a>
+            <span>OR</span>
+            <a class="btn btn-primary fb-btn" href="http://127.0.0.1:4567/api/v1/auth/facebook/login">Facebook login</a>
+            <a class="btn btn-primary gp-btn" href="http://127.0.0.1:4567/api/v1/auth/google/login">Google login</a>
+        </div>
+    </form>
+</div>

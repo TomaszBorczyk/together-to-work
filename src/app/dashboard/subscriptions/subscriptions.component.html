@@ -1,0 +1,50 @@
+
+<h1 *ngIf="subscribedRoutes.length>0">
+  Subscribed routes:
+</h1>
+<h1 *ngIf="subscribedRoutes.length===0">
+  No subscribed routes.
+  <a routerLink="/searchroutes">Send request now,</a>
+  <a routerLink="/dashboard/requests">or view pending requests</a>
+</h1>
+
+<div class="row routes-cards">
+
+      <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-xs-12" *ngFor="let route of subscribedRoutes; let i = index">
+              <div class="card">
+                  <div class="card-block">
+                      <span class="card-title">
+                          {{route.startStreet}} - {{route.endStreet}}
+                      </span>
+                      <div class="card-text">
+                        <div class="row">
+                          <a routerLink="/profile/{{route._creator._id}}"><clr-icon shape="user"></clr-icon> {{ route._creator.username }}</a>
+                          <div class="left-margin"><clr-icon shape="clock"></clr-icon> {{ route.startTime }} </div>
+                        </div>
+
+                        <div class="route-days">
+                          <clr-icon shape="calendar"></clr-icon>
+                          <table class="table">
+                            <tr>
+                              <td *ngFor="let day of getAsArray(route.days)">
+                                <div [ngClass]="{'day-active': day.value}">
+                                  {{ day.name }}
+                                </div>
+                              </td>
+                            </tr>
+                          </table>
+                        </div>
+
+                      </div>
+                  </div>
+                  <div class="card-footer">
+
+                    <!-- <button type="button" class="btn btn-sm btn-primary" name="send-request-button" *ngIf="!routesStatus[i].isPending && !routesStatus[i].isSubscribed"  (click)="sendRequest(route)">Send request</button> -->
+                    <button type="button" class="btn btn-sm btn-danger" name="cancel-route-button" (click)="cancelSubscribedRoute(route)">Resign</button>
+
+                  </div>
+
+              </div>
+      </div>
+
+</div>
