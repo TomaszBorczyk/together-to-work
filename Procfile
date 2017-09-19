@@ -1,1 +1,1 @@
-web: node server
+web: npm install && ng build && node server
