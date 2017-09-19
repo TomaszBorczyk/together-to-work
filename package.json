@@ -5,7 +5,7 @@
   "scripts": {
     "ng": "ng",
     "server:watch": "node server",
-    "start": "ng server",
+    "start": "ng build --watch",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
