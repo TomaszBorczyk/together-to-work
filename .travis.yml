@@ -1,23 +1,19 @@
 language: node_js
 node_js:
-  - "6.10"
+- '6.10'
 cache:
   directories:
-    - node_modules
-
+  - node_modules
 notifications:
   slack: hotcontent:wcvNsvkG4GUtLzbT5JED1gWI
-
 install:
-  - npm i
-
+- npm i
 script:
-  - ng build
-
+- ng build
 deploy:
   provider: heroku
   api_key:
-    secure: DCPmEKDCQW+4acp0aDJWdHv4JVtnNA4w/vMwDlzOvV2Qs611fOsPmCidbHZBde7V5swQp3fF5xdHiOeWorFSOi1liS71gUIiNSvxN+v9rCr2be5NQtVuA5dVx7GIdMpfAYZmCwDsRrYwR9Ht0rRksI5UiqptF0x8zQIp7t/mr71/UdXozwr/GGpEmEVEtcs/eZ+xjLYTdOCTr9FrDd+Jft5UBcVTp62B0GV9chw8YARt5zsnDkvl/Pa9GyCAfePgNU9jRq/nAUWNHB0F+gIQi799P9ADv/Wwd+bN7+XV/gZqIhzEXnshH6WXmcJkMLxURgBABXjPQkAhcMlj4vIgIqrWYuiGL7utLFJvYHH9kA+NhcQ76GYuwptD8m0EEWmpygAxPkmB7aOKumxsXsGo9VCGTSOGucUC5WLU4rQ2NghP1xbQw6+sX4gggq0bGkYxp8RGNNZ6N2epJTt4MrG3K0mKmVMc2t33nwb806EUup5McefmJYKG0hNPWRwG5IGKkTg5fYc0Ghnn9jFdOtOi7t/WVjIRDP7vHp+9GrXzC3XwkwLZ8WCf0ZV5FeTrFFf7rHFixfM1WOpVMQU2miWQQh9tgPpA1fQCpC+qyyYGSdx7xaP+22wvSFQ1cXzDaB8DDqLyk3V1B81sXC0rC8w7CcUj4PoWIWjgzOsZwKhNIqs=
+    secure: Ylv+jqn9PQaQW1f1q+gVBR28RYU3dCShxYQ+KZk/IcKYMDPjiNKK45pnYwiIg60rYKwoL04WGZb+Zz/Ai3TBox3pfQLwUONtb1riFg8I+LS1ersEYqnnyRUJ6MzH2Jzv8ekIWj3mtNInpntaJIpNeLtxA1Ldz/Lq9+T/CJbVgg/i03esR2AgRoN4KeKLyz0CvzCFEBmxw2Zet8wYe3E9q8DMUxSIYrqATEIeOF+LBPvybol+zrsgnv06gw8ejFDxSie7UkmlUn8Z/eXrFXJ+disVXVt5+N+hGnGCGGvnugsj8zB7KZY3Za15wewIHnHsunSGNyInDDn2sOCuGm0srxVrQ7NLbZJTef67H51K23KOl93H3BEIG6wK3lO3CaX81o3/bOrodaNtyW9hiHEHAOEbW3K8Rxi4HoOdUxYwNpebsVkWQX3IvsQfgI0jDtR+qc+67VP1N37bCGdXioK8kRrLfEedYekU2yS2Z48ej94HwJxJiQffgV64dDn1WlKPhXvy2yJV7d4ib6VH9hL1SO2T1sTzaVVElgApwsw/S/wjkFqvX0/sGSY0MAhuGhd4q1hCR/5hn2LgNLm+fi/qlLLXGuPAzE1UbRFJ6GP5zDDI0sB2amp7nmGabx2VIZ0gspTDZnix5MYHzkStFvWqlPP94UkJr8E39qcYekPt82M=
   app:
     master: together-to-work
     develop: develop-together-to-work
