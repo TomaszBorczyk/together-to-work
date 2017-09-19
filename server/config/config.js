@@ -1,5 +1,5 @@
 module.exports = {
-  db: 'mongodb://admin:pwd123@localhost:27017/together-to-work',
+  db: 'mongodb://root:hotcontent2017MB@ds143734.mlab.com:43734/together_to_work',
   nStreetsSearch: 5,
 
 }
