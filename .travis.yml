@@ -19,4 +19,6 @@ deploy:
   provider: heroku
   api_key:
     secure: "A7/VEYopETtfO1/PMA/zcqdOvngqxDWJedOQ3Mm0b1g1retFc54bevX4atwZBnQKpS2RcZbAGpu6O8hqiAY7tf1Sy2QNQL2p/AB8EUQv6HTvBW89CZMextYpSiFeXulKTHJZPc50sOfr4GMttpjTiF/QscfJ203lPCUI0Z3UQ90SLJZQ+l418DqZn6I6xhjHdQrsJkP/JnKI31Zaco/XgVAdOtVQCZUJuN2gVwHl1pAxjhbenpGki9SQwfAA9Nlw2KB4GsecrLlFPnmCMvN7rua7A8lywUxWfj+b+galsbclB0OCaWpqZ9SbZpY1SS32SpN5ax3RB0t42rYf5BeWWBEV2D+zemkBRss9wvRQaklT3RaQjI3DsMFkgloURTLiICGA6FqzlnMELduL3HNrRS5GuEriGtEepJEMXgD5d6EP42iomduj8sKOl+Z2cmxTFFDNDufUVuwGWja00buNcJsmX79m7309ysmLwzlcF18BlOFhdV9atlrLHaCGc6Dc+RLLS9bSrj2pwNue/XuZlovWIFkxHIKfXM++V3/cOAHki5rfrkd1qEcYdMWnihnzzLt6N0P3LNA167x0Nc1JHfTSyet9Zq6nvAe1QMEiRa/wZZssW14jMFIWRk4iBui5bZimIDL0a4WwDtd9/2YVJkEFpnlJ7NLDEr+Zu/88dY4="
-  app: together-to-work
+  app:
+    master: together-to-work
+    develop: develop-together-to-work
