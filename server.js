@@ -12,7 +12,7 @@ const express = require('express'),
 const config = require('./server/config/config')
 
 
-const port = 4567;
+const port = process.env.PORT | 4567;
 let app = express();
 
 
