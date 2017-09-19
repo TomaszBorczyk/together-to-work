@@ -4,6 +4,10 @@ node_js:
 cache:
   directories:
     - node modules
+    
+notifications:
+  slack: hotcontent:wcvNsvkG4GUtLzbT5JED1gWI
+  on_failure: always
 
 install:
   - npm i -g @angular/cli
