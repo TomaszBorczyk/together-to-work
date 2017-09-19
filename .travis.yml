@@ -22,3 +22,5 @@ deploy:
   app:
     master: together-to-work
     develop: develop-together-to-work
+  on:
+    repo: hotcontent/together-to-work
