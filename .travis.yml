@@ -1,6 +1,10 @@
 language: node_js
 node_js:
   - "6.10"
+cache:
+  bundler: true
+  directories:
+    - node modules
 
 install:
   - npm i -g @angular/cli
