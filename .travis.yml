@@ -6,4 +6,3 @@ node_js:
 install:
   - npm install
   - ng build
-script:
