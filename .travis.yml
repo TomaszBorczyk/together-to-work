@@ -7,7 +7,6 @@ cache:
 
 notifications:
   slack: hotcontent:wcvNsvkG4GUtLzbT5JED1gWI
-  on_failure: always
 
 install:
   - npm i
