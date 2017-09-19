@@ -12,7 +12,8 @@ const express = require('express'),
 const config = require('./server/config/config')
 
 
-const port = process.env.PORT | 4567;
+const port = process.env.PORT || 4567;
+console.log(port);
 let app = express();
 
 
