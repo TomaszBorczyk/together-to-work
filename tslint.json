@@ -6,8 +6,7 @@
     "callable-types": true,
     "class-name": true,
     "comment-format": [
-      true,
-      "check-space"
+      true
     ],
     "curly": true,
     "eofline": true,
@@ -37,6 +36,7 @@
     "no-bitwise": true,
     "no-console": [
       true,
+      "log",
       "debug",
       "info",
       "time",
@@ -68,6 +68,7 @@
       "check-else",
       "check-whitespace"
     ],
+    "ordered-imports": true,
     "prefer-const": true,
     "quotemark": [
       true,
@@ -75,6 +76,7 @@
     ],
     "radix": true,
     "semicolon": [
+      true,
       "always"
     ],
     "triple-equals": [
