@@ -1,5 +1,5 @@
 module.exports = {
-  db: 'mongodb://admin:pwd123@localhost:27017/together-to-work',
+  db: process.env.MONGODB_URI,
   nStreetsSearch: 5,
 
 }
