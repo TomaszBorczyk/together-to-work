@@ -1,64 +1,60 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 import { Http, RequestOptions, URLSearchParams } from '@angular/http';
-import { Observable } from "rxjs";
-import 'rxjs/Rx';
+import { Router } from '@angular/router';
 import { LocalStorageService } from 'angular-2-local-storage';
-import { StorageService } from  './local-storage.service';
-import { User } from '../models/user.model';
-import { Car } from '../models/car.model';
-import { Route } from '../models/route.model';
-import { RouteRequest, RouteRequestRes } from '../models/request.model';
+import { Observable } from 'rxjs';
+import 'rxjs/Rx';
 import * as _ from 'underscore';
+import { Car } from '../models/car.model';
+import { RouteRequest, RouteRequestRes } from '../models/request.model';
+import { Route } from '../models/route.model';
+import { User } from '../models/user.model';
+import { StorageService } from './local-storage.service';
 
 @Injectable()
 export class ApiService {
   // apiServer:string = 'http://127.0.0.1:4567';
-  apiServer:string = 'http://localhost:4567/api/v1';
+  apiServer: string = 'http://localhost:4567/api/v1';
 
   constructor(
-    private http:Http,
-    private router:Router,
-    private localStorage:LocalStorageService,
-    private ttw_storageService:StorageService
+    private http: Http,
+    private router: Router,
+    private localStorage: LocalStorageService,
+    private ttw_storageService: StorageService
   ) { };
 
   //=======================
   // AUTHENTICATION & USER
   //=======================
 
-  customLogin(){
-    let body = { username: 'john', password: 'pass'};
+  customLogin() {
+    const body = { username: 'john', password: 'pass'};
 
     this.http.post(this.apiServer + '/user/login', body)
-              .subscribe( res =>{
+              .subscribe( res => {
                   this.ttw_storageService.setUser(res.json().user);
-                  // this.router.navigate(['/dashboard']);
                   window.location.reload();
                 },
                 err => console.log(err)
               );
   }
 
-  login(username:string, password:string):Promise< void |object>{
-    let body = { username: username, password: password};
+  login(username: string, password: string):Promise< void |object> {
+    const body = { username: username, password: password};
 
     return this.http.post(this.apiServer + '/user/login', body)
              .toPromise()
-             .then( res =>{
+             .then( res => {
                     console.log('LOGGED IN');
                     this.ttw_storageService.setUser(res.json());
                     window.location.reload();
                   }
               )
-             .catch( err =>{
-               throw err;
-              }
-             )
+             .catch( err => { throw err; } );
   }
 
   registerUser(user:User){
-    let body = { username: user.username,
+    const body = { username: user.username,
                  email: user.email,
                  password: user.password
                };
