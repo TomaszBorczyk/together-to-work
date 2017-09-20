@@ -3,6 +3,8 @@
     "node_modules/codelyzer"
   ],
   "rules": {
+    "arrow-return-shorthand": true,
+    "arrow-parens": [true, "ban-single-arg-parens"],
     "callable-types": true,
     "class-name": true,
     "comment-format": [
@@ -102,7 +104,8 @@
       "check-decl",
       "check-operator",
       "check-separator",
-      "check-type"
+      "check-type",
+      "check-type-operator"
     ],
     "directive-selector": [
       true,

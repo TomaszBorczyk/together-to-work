@@ -1,0 +1,22 @@
+language: node_js
+node_js:
+- '6.10'
+cache:
+  directories:
+  - node_modules
+notifications:
+  slack: hotcontent:wcvNsvkG4GUtLzbT5JED1gWI
+install:
+- npm i
+script:
+- ng build
+deploy:
+  provider: heroku
+  skip_cleanup: true
+  api_key:
+    secure: Ylv+jqn9PQaQW1f1q+gVBR28RYU3dCShxYQ+KZk/IcKYMDPjiNKK45pnYwiIg60rYKwoL04WGZb+Zz/Ai3TBox3pfQLwUONtb1riFg8I+LS1ersEYqnnyRUJ6MzH2Jzv8ekIWj3mtNInpntaJIpNeLtxA1Ldz/Lq9+T/CJbVgg/i03esR2AgRoN4KeKLyz0CvzCFEBmxw2Zet8wYe3E9q8DMUxSIYrqATEIeOF+LBPvybol+zrsgnv06gw8ejFDxSie7UkmlUn8Z/eXrFXJ+disVXVt5+N+hGnGCGGvnugsj8zB7KZY3Za15wewIHnHsunSGNyInDDn2sOCuGm0srxVrQ7NLbZJTef67H51K23KOl93H3BEIG6wK3lO3CaX81o3/bOrodaNtyW9hiHEHAOEbW3K8Rxi4HoOdUxYwNpebsVkWQX3IvsQfgI0jDtR+qc+67VP1N37bCGdXioK8kRrLfEedYekU2yS2Z48ej94HwJxJiQffgV64dDn1WlKPhXvy2yJV7d4ib6VH9hL1SO2T1sTzaVVElgApwsw/S/wjkFqvX0/sGSY0MAhuGhd4q1hCR/5hn2LgNLm+fi/qlLLXGuPAzE1UbRFJ6GP5zDDI0sB2amp7nmGabx2VIZ0gspTDZnix5MYHzkStFvWqlPP94UkJr8E39qcYekPt82M=
+  app:
+    master: together-to-work
+    develop: develop-together-to-work
+  on:
+    repo: hotcontent/together-to-work
